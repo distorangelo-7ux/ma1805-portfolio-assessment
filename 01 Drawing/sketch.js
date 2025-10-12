@@ -48,6 +48,9 @@ function draw() {
     textSize(100)
     fill(55, 53, 61)
     text(`${mouseX} , ${mouseY}`, 360, 360);
+    textSize(25)
+    fill(235, 227, 226)
+    text(`imperfect`, 360, 420);
     bgHex = '#d98d86'
   } else {
     bgHex = '#e3ded7'
