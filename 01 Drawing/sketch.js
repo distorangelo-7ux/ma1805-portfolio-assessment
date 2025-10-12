@@ -18,17 +18,73 @@ let noseY;
 let mouthX;
 let mouthY;
 
+let isHovering = false;
+let isActive = false;
+
+let bgHex = '#e3ded7'
+
 function setup() {
   createCanvas(720,720);
-  refreshButton = createButton('Retake photo?')
-  refreshButton.position(310,600);
+  startButton = createButton('Take photo?');
+  startButton.position(100,50);
 
-  refreshButton.mouseClicked(getRandomTranslate);
+  startButton.mouseClicked(activateCanvas);
 }
 
 function draw() {
-  background(220);
-  drawAll();
+  background(bgHex);
+
+  textAlign(CENTER);
+  translate(0,0);
+
+  if (isActive) {
+    drawAll();
+  }
+
+  checkIfHovering();
+
+  if (isHovering) {
+    getRandomTranslate();
+    textSize(100)
+    fill(55, 53, 61)
+    text(`${mouseX} , ${mouseY}`, 360, 360);
+    bgHex = '#d98d86'
+  } else {
+    bgHex = '#e3ded7'
+  }
+}
+
+function activateCanvas() {
+  getRandomTranslate();
+  startButton.remove();
+  refreshButton = createButton('Retake photo?');
+  refreshButton.position(310,600);
+
+  refreshButton.mouseClicked(getRandomTranslate);
+  isActive = true;
+}
+
+function checkIfHovering() {
+  if ( 
+    // Left Eye detection
+    (mouseX >= 200 + leftEyeX && mouseX <= 300 + leftEyeX &&
+      mouseY >= 245 + leftEyeY && mouseY <= 280 + leftEyeY) ||
+    // Right Eye detection
+    (mouseX >= 432 + rightEyeX && mouseX <= 532 + rightEyeX &&
+      mouseY >= 270 + rightEyeY && mouseY <= 320 + rightEyeY) ||
+    // Nose detection
+    (mouseX >= 310 + noseX && mouseX <= 395 + noseX &&
+      mouseY >= 355 + noseY && mouseY <= 390 + noseY) ||
+    // Mouth detection
+    (mouseX >= 310 + mouthX && mouseX <= 410 + mouthX &&
+      mouseY >= 485 + mouthY && mouseY <= 515 + mouthY)
+  ) {
+    isHovering = true;
+  } else {
+    isHovering = false;
+  }
+
+
 }
 
 function drawAll() {
@@ -52,6 +108,7 @@ function drawAll() {
 }
 
 function getRandomTranslate() {
+
   leftEyeX = random(-5, 5);
   leftEyeY = random(-5, 5);
 
@@ -72,6 +129,9 @@ function getRandomTranslate() {
 }
 
 function drawNose() {
+  //fill(255,255,255)
+  //rect(310,355, 85, 35)
+
     // Nose
   strokeWeight(6)
   line(320, 380, 360, 360)
@@ -79,6 +139,10 @@ function drawNose() {
 }
 
 function drawLeftEye() {
+  //fill(255,255,255)
+  //rect(200,245, 100, 35)
+
+
     // Left Eye
     // Coloured part first
   strokeWeight(0)
@@ -98,6 +162,11 @@ function drawLeftEye() {
 }
 
 function drawRightEye(width, height) {
+
+  //fill(255,255,255)
+  //rect(432,270, 100, 50)
+
+  fill(43, 20, 13)
   // Right Eye
   ellipse(
     480,295,
@@ -105,6 +174,10 @@ function drawRightEye(width, height) {
 }
 
 function drawMouth(width, height) {
+  //fill(255,255,255)
+  //rect(310,485, 100, 30)
+
+
   fill(43, 20, 13)
   ellipse(360,500,width,height)
 }
