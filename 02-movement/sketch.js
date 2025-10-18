@@ -101,7 +101,7 @@ function preload() {
   drumSound = loadSound('assets/drum.wav');
   drumSound.setVolume(0.3);
 
-  ambientSound = loadSound('assets/ambience.wav');
+  ambientSound = loadSound('assets/ambience.mp3');
   ambientSound.setVolume(0.05);
 }
 
