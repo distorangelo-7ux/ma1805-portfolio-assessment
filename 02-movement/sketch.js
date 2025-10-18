@@ -3,11 +3,11 @@ let defaultArray = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
 let emptyArray = [];
 let positioningArray = [];
 
-let articleRandom = ["those","these","your","the","my","their","his","her","heaven's","life's","our"];
-let nounRandom = ["programs","wires","machines","systems","minds","engines","designs","variables","networks","hearts","creatures","ecosystems", "circuits","words","desires","fires","numbers","[REDACTED]"];
-let linkingRandom = ["are","were","fail,","succeed,","wander,","start","stop","leave,","wander,","sing,"];
+let articleRandom = ["those","these","your","the","my","their","his","her","heaven's","life's","our","earth's","people's"];
+let nounRandom = ["programs","wires","machines","systems","minds","engines","designs","variables","networks","hearts","creatures","ecosystems", "circuits","words","desires","fires","numbers","[REDACTED]","wishes","dreams"];
+let linkingRandom = ["are","were","fail,","succeed,","wander,","start","stop","leave,","wander,","sing,","scatter,"];
 let adverbRandom = ["slowly","rapidly","staunchly","desperately","carefully","calmly","gently","swiftly","proudly","secretly","lightly","constantly","indefinitely","seldom","forever","never"];
-let verbRandom = ["imagining","sleeping","speaking","sparking","thinking","creating","crying","evolving", "watching", "connecting","grasping","losing","fading","falling","failing","reading","writing","sailing","running","walking","flying","reading","fighting","shining","laughing","smiling","cheering","winning","existing","burning","[REDACTED]","glistening","loving","raging"];
+let verbRandom = ["imagining","sleeping","speaking","sparking","thinking","creating","crying","evolving", "watching", "connecting","grasping","losing","fading","falling","failing","reading","writing","sailing","running","walking","flying","reading","fighting","shining","laughing","smiling","cheering","winning","existing","burning","[REDACTED]","glistening","loving","raging","speaking","searching"];
 let emptyRandom = [" ", " ", " "]
 
 let placeholder1;
