@@ -1,51 +1,219 @@
-let personAge = 55;
-let activeCircle = true;
 
-let home = "eeeYIKES i won't be leaving this house SOON!!!";
+let defaultArray = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
+let emptyArray = [];
+let positioningArray = [];
 
-let loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut purus rutrum, efficitur sapien sed, pulvinar mi. Aliquam quis pharetra orci. Integer rutrum, magna sit amet condimentum scelerisque, erat turpis dapibus sem, sed interdum dui diam a arcu. Donec nec gravida sem, vitae dignissim enim. Proin tristique faucibus est, eu fringilla nisl vehicula vitae. Quisque vel elementum nibh. Quisque nec enim non leo condimentum accumsan. Maecenas ac dapibus lectus. Fusce tellus augue, commodo vitae urna non, varius euismod lacus."
+let articleRandom = ["those","these","your","the","my","their","his","her","heaven's","life's","our"];
+let nounRandom = ["programs","wires","machines","systems","minds","engines","designs","variables","networks","hearts","creatures","ecosystems", "circuits","words"];
+let linkingRandom = ["are","were","fail,","succeed,"];
+let adverbRandom = ["still","slowly","rapidly","adamantly","desperately","carefully","calmly","gently","critically","proudly","secretly"];
+let verbRandom = ["imagining","sleeping","speaking","sparking","thinking","creating","crying","evolving","climbing", "watching", "connecting","grasping","losing","fading","falling","failing","reading","writing","weaving","running","walking","flying","reading","fighting","saving","laughing","smiling","cheering","beating","winning","existing"];
 
-const loremIpsumArray = loremIpsum.split(" ")
+let chosenArticle = [];
+let rangeArticle = [];
+let displayArticle = [];
+let scrambleArticle = [];
+let posArticle;
 
-let randomWord = 0;
-let wordRepeats = [];
-let wordCount = loremIpsumArray.length
-let isRepeated = false;
+let chosenNoun = [];
+let rangeNoun = [];
+let displayNoun = [];
+let scrambleNoun = [];
+let posNoun;
+
+let chosenLinking = [];
+let rangeLinking = [];
+let displayLinking = [];
+let scrambleLinking = [];
+let posLinking;
+
+let chosenAdverb = [];
+let rangeAdverb = [];
+let displayAdverb = [];
+let scrambleAdverb = [];
+let posAdverb;
+
+let chosenVerb = [];
+let rangeVerb = [];
+let displayVerb = [];
+let scrambleVerb = [];
+let posVerb;
+
+let scrambleValue = 0;
+
+let posX = 0;
+let posY = 200;
 
 function setup() {
   createCanvas(400, 400);
-  let pet = "Cattttttttt";
-  console.log(pet);
-  frameRate(10);
+
+    //console.log(randomScramble);
+  setInterval(scrambleFunction, 100);
+  initiateAll();
+
+  startButton = createButton('refresh');
+  startButton.position(100,50);
+
+  startButton.mouseClicked(initiateAll);
+
 }
 
 function draw() {
-  background('#a9a19fff');
-  randomVariable = int(random(50, 57))
+  scrambleZeros(displayNoun, scrambleNoun, posNoun);
+  scrambleZeros(displayArticle, scrambleArticle, posArticle);
+  scrambleZeros(displayLinking, scrambleLinking, posLinking);
+  scrambleZeros(displayAdverb, scrambleAdverb, posAdverb);
+  scrambleZeros(displayVerb, scrambleVerb, posVerb);
+}
 
-  noStroke();
-  fill(138, 245, 39, 128)
-  circle(width/2, height/2, personAge)
+function initiateAll() {
+  initiateVariables( chosenArticle, displayArticle, scrambleArticle, rangeArticle, articleRandom );
+  initiateVariables( chosenNoun, displayNoun, scrambleNoun, rangeNoun, nounRandom );
+  initiateVariables( chosenLinking, displayLinking, scrambleLinking, rangeLinking, linkingRandom );
+  initiateVariables( chosenAdverb, displayAdverb, scrambleAdverb, rangeAdverb, adverbRandom );
+  initiateVariables( chosenVerb, displayVerb, scrambleVerb, rangeVerb, verbRandom );
+}
 
-  textAlign(CENTER);
-  textSize(12)
+function initiateVariables(chosen, display, scramble, range, random) {
+  arrayCopy(defaultArray, display);
+  arrayCopy(defaultArray, scramble);
 
-  if (wordCount > 0) {
-    randomise();
-    text(loremIpsumArray[randomWord], width/2, (height / 2) - randomVariable)
+  wipeAll(chosen);
+  wipeAll(range);
+
+  setPositions(100, 50)
+
+  scrambleArray(scramble);
+  setWord(chosen, random, range);
+}
+
+function wipeAll(array) {
+  for (i = 0; i < array.length - 1; i++) {
+    array.pop();
+  }
+}
+
+function setPositions(starting, spacing) {
+  arrayCopy(emptyArray, positioningArray)
+  positioningArray.push(starting)
+  let startValue = starting;
+
+  for (i = 0; i < 4; i++) {
+    positioningArray.push( startValue+=spacing )
   }
 
-  text(wordCount, width/3, height/3)
+  posArticle = positioningArray[0];
+  posNoun = positioningArray[1];
+  posLinking = positioningArray[2];
+  posAdverb = positioningArray[3];
+  posVerb = positioningArray[4];
+}
+
+function scrambleArray(randomScramble) {
+  for (i = 0; i < randomScramble.length; i++) {
+    randomScramble[i] = int(random(2, 5)).toString();
+  }
+}
+
+function scrambleFunction() {
+  checkScramble(displayNoun, scrambleNoun, rangeNoun, chosenNoun, posNoun);
+  checkScramble(displayArticle, scrambleArticle, rangeArticle, chosenArticle, posArticle);
+  checkScramble(displayLinking, scrambleLinking, rangeLinking, chosenLinking, posLinking);
+  checkScramble(displayAdverb, scrambleAdverb, rangeAdverb, chosenAdverb, posAdverb);
+  checkScramble(displayVerb, scrambleVerb, rangeVerb, chosenVerb, posVerb);
+}
+
+function drawLines() {
+  clear();
+  background('#19191aff');
+  posX = -30;
+
+  for (i = 0; i < defaultArray.length; i++) {
+    textSize(30);
+    fill('#5cdb86ff')
+
+    //if (displayArray[i].match("I")) {
+      //posX += 5;
+    //}
+
+    text(displayNoun[i], posX, posNoun);
+    text(displayArticle[i], posX, posArticle);
+    text(displayLinking[i], posX, posLinking);
+    text(displayAdverb[i], posX, posAdverb);
+    text(displayVerb[i], posX, posVerb);
+
+    //if (displayArray[i].match("I")) {
+      //posX -= 15;
+    //}
+
+    posX += 30;
+  }
+}
+
+function scrambleZeros(array, randomLength, posY) {
+  for (index = 0; index < array.length; index++) {
+    if (randomLength[index] != 0) {
+      array[index] = int( random(0, 9) ).toString();
+    }
+  }
+
+  drawLines(array, posY);
+}
+
+function setWord(subject, nounRandom, wordRange) {
+  let randomWordIndex = int(random(0, nounRandom.length ))
+  let chosenIndividual = nounRandom[randomWordIndex].toUpperCase().split("");
+
+  arrayCopy(chosenIndividual, subject);
+
+  let wordLength = int(subject.length);
+  let startingIndex = int( int(defaultArray.length / 2)  - int(wordLength / 2));
+
+  wordRange[0] = startingIndex;
+  wordRange[1] = startingIndex + wordLength - 1;
 
 }
 
-function randomise() {
-  randomWord = int(random(0, loremIpsumArray.length))
+function checkScramble(displayArray, randomScramble, wordRange, wordChosen, posY) {
 
-  if (!wordRepeats.includes(randomWord)) {
-    wordRepeats.push(randomWord);
-    wordCount--;
-  } else {
-    randomise();
+  if (!checkIfScrambleFinished(randomScramble)) {
+    for (i = 0; i < randomScramble.length; i++) {
+      reduceScramble(i, displayArray, randomScramble, wordRange, wordChosen, posY);
+    }
   }
+}
+
+function reduceScramble(index, displayArray, randomLength, wordRange, wordChosen) {
+    scrambleValue = int(randomLength[index]);
+    if (scrambleValue > 0) {
+      scrambleValue--;
+      if (scrambleValue == 0) {
+        replaceIndex(index, wordRange, wordChosen, displayArray, posY);
+      }
+    }
+
+    randomLength[index] = scrambleValue;
+}
+
+function replaceIndex(index, wordRange, wordChosen, displayArray, posY) {
+  if (index >= wordRange[0] && index <= wordRange[1]) {
+    displayArray[index] = wordChosen[ index - wordRange[0] ];
+  } else {
+    displayArray[index] = " ";
+  }
+
+  drawLines(displayArray, posY);
+}
+
+function checkIfScrambleFinished(randomScramble) {
+  let sum = 0;
+  for (i = 0; i < randomScramble.length; i++) {
+    sum += int(randomScramble[i]);
+  }
+
+  if (sum == 0) {
+    return true;
+  }
+
+  return false;
 }
