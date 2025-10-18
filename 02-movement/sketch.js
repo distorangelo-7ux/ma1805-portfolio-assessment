@@ -4,10 +4,10 @@ let emptyArray = [];
 let positioningArray = [];
 
 let articleRandom = ["those","these","your","the","my","their","his","her","heaven's","life's","our"];
-let nounRandom = ["programs","wires","machines","systems","minds","engines","designs","variables","networks","hearts","creatures","ecosystems", "circuits","words","desires"];
-let linkingRandom = ["are","were","fail,","succeed,"];
-let adverbRandom = ["still","slowly","rapidly","adamantly","desperately","carefully","calmly","gently","critically","proudly","secretly"];
-let verbRandom = ["imagining","sleeping","speaking","sparking","thinking","creating","crying","evolving","climbing", "watching", "connecting","grasping","losing","fading","falling","failing","reading","writing","weaving","running","walking","flying","reading","fighting","saving","laughing","smiling","cheering","beating","winning","existing"];
+let nounRandom = ["programs","wires","machines","systems","minds","engines","designs","variables","networks","hearts","creatures","ecosystems", "circuits","words","desires","fires","numbers","[REDACTED]"];
+let linkingRandom = ["are","were","fail,","succeed,","wander,","start","stop","leave,","wander,","sing,"];
+let adverbRandom = ["slowly","rapidly","staunchly","desperately","carefully","calmly","gently","swiftly","proudly","secretly","lightly","constantly","indefinitely","seldom","forever","never"];
+let verbRandom = ["imagining","sleeping","speaking","sparking","thinking","creating","crying","evolving", "watching", "connecting","grasping","losing","fading","falling","failing","reading","writing","sailing","running","walking","flying","reading","fighting","shining","laughing","smiling","cheering","winning","existing","burning","[REDACTED]","glistening","loving","raging"];
 let emptyRandom = [" ", " ", " "]
 
 let placeholder1;
@@ -25,9 +25,12 @@ let placeholder5;
 let placeholder6;
 
 let scrambleValue = 0;
+let finishScrambling = false;
 
 let posX = 0;
 let posY = 200;
+
+let typeSound;
 
 class Word {
   constructor( randomList, chosenWord, range, display, scramble, position ) {
@@ -89,10 +92,26 @@ class Word {
 
 }
 
+function preload() {
+  soundFormats('wav','mp3','ogg');
+  typeSound = loadSound('assets/typing.wav');
+  typeSound.setVolume(1);
+
+  finishSound = loadSound('assets/typefinish.wav');
+  drumSound = loadSound('assets/drum.wav');
+  drumSound.setVolume(0.3);
+
+  ambientSound = loadSound('assets/ambience.wav');
+  ambientSound.setVolume(0.05);
+}
+
 function setup() {
   createCanvas(400, 400);
   setPositions(60, 30);
-  
+  drumSound.play();
+  typeSound.play();
+  ambientSound.loop();
+
   placeholder1 = new Word( emptyRandom, [], [], [], [], positioningArray[0]);
   placeholder2 = new Word( emptyRandom, [], [], [], [], positioningArray[1]);
   placeholder3 = new Word( emptyRandom, [], [], [], [], positioningArray[2]);
@@ -112,6 +131,11 @@ function setup() {
 }
 
 function mouseClicked() {
+  typeSound.stop();
+  finishScrambling = false;
+  drumSound.play();
+  typeSound.play();
+  
   article.refresh();
   noun.refresh();
   linking.refresh();
@@ -178,12 +202,17 @@ function scrambleFunction() {
 function drawLines() {
   clear();
   background('#19191aff');
-  posX = -30;
+  posX = -20;
 
   for (i = 0; i < defaultArray.length; i++) {
     textFont('Courier New');
     textSize(30);
+
     fill('#5cdb86ff')
+
+    if (finishScrambling) {
+      fill('#e8e0e0ff')
+    }
 
     text(placeholder1.display[i], posX, placeholder1.position);
     text(placeholder2.display[i], posX, placeholder2.position);
@@ -209,6 +238,15 @@ function checkScramble(wordObject) {
   if (!checkIfScrambleFinished(randomScramble)) {
     for (i = 0; i < randomScramble.length; i++) {
       reduceScramble(i, wordObject);
+    }
+  } else {
+    if (!finishScrambling) {
+      typeSound.stop();
+      finishSound.play();
+      drumSound.play();
+
+      console.log("finished!")
+      finishScrambling = true;
     }
   }
 }
