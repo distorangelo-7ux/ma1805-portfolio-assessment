@@ -208,10 +208,10 @@ function drawLines() {
     textFont('Courier New');
     textSize(30);
 
-    fill('#5cdb86ff')
+    fill('#5cdb86ff');
 
     if (finishScrambling) {
-      fill('#e8e0e0ff')
+      fill('#e8e0e0ff');
     }
 
     text(placeholder1.display[i], posX, placeholder1.position);
