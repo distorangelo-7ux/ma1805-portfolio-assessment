@@ -3,7 +3,8 @@ let phoneHeight;
 let cornerWidth;
 let cornerHeight;
 
-let scrollDepth = 255;
+let scrollDepth = 245;
+let rgbDepth = 0;
 
 let w = 360;
 let h = 640;
@@ -31,6 +32,11 @@ let squareSize = 5;
 let arrayOfArrays = [arrayOfShapes];
 
 function draw() {
+  fill(0);
+  rect(windowWidth - 25, 0, 25, windowHeight);
+
+  fill(128);
+  rect(windowWidth - 25, 25 - rgbDepth * 5, 25, 100, 25);
 
 }
 
@@ -50,11 +56,11 @@ function drawGrid() {
 
 function drawShapes(i) {
   let squareSize = random(5, 51);
-  let r = random(0, 255);
-  let g = random(0, 255);
-  let b = random(0, 255);
+  let r = random(25, 255);
+  let g = random(25, 255);
+  let b = random(75, 255);
 
-  fill(r, g, b);
+  fill(r + rgbDepth, g + rgbDepth, b + rgbDepth);
   if ( int(arrayOfShapes[i]) % 2 == 0) {
       square((cornerWidth * x) + margins, (cornerHeight + margins) * y, squareSize);
     }
@@ -74,12 +80,14 @@ function mouseWheel(event) {
   drawGrid();
 
   if (event.delta < 0) {
-    if (scrollDepth < 255) {
+    if (scrollDepth < 245) {
       scrollDepth++;
+      rgbDepth++;
     }
   } else {
     if (scrollDepth > 1) {
       scrollDepth--;
+      rgbDepth--;
     }
   }
 }
