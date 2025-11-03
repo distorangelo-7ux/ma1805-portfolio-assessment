@@ -2,7 +2,7 @@ let TimerObject;
 let mouseWasPressed = false;
 let timerStarted = false;
 let currentImage = 0;
-let currentArray = [];
+let currentArray = [0, 0, 0];
 
 let profile = -1;
 let appear = false;

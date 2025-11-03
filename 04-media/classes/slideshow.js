@@ -1,7 +1,7 @@
 class Slideshow {
     constructor() {
         this.imgArray;
-        this.imageSize = windowWidth / 16
+        this.imageSize = windowWidth / 4
     }
 
     setArray(imgArray) {

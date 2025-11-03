@@ -1,24 +1,24 @@
 let bg;
 
-let c1; let c2; let c3; let c4; let c5; let c6; let c7; let c8; let c9; let c10; let c11; let cv;
+let c1; let c2; let c3; let c4; let c5; let c6; let c7; let cv;
 let collection;
 
-let d1; let d2; let d3; let d4; let d5; let d6; let dv;
+let d1; let d2; let d3; let d4; let d5; let d6; let d7; let dv;
 let dog;
 
-let f1; let f2; let f3; let f4; let f5; let fv;
+let f1; let f2; let f3; let f4; let f5; let f6; let f7; let fv;
 let flow;
 
-let i1; let i2; let i3; let i4; let i5; let i6; let iv;
+let i1; let i2; let i3; let i4; let i5; let i6; let i7; let iv;
 let industry;
 
-let o1; let o2; let o3; let o4; let o5; let o6; let ov;
+let o1; let o2; let o3; let o4; let o5; let o6; let o7; let ov;
 let outside;
 
-let r1; let r2; let r3; let r4; let rv;
+let r1; let r2; let r3; let r4; let r5; let r6; let r7; let rv;
 let rain;
 
-let w1; let w2; let w3; let w4; let w5; let wv;
+let w1; let w2; let w3; let w4; let w5; let w6; let w7; let wv;
 let wall;
 
 let mediaArray = [];
@@ -35,15 +35,11 @@ function preload() {
   c5 = loadImage('media/collection/5.jpg');
   c6 = loadImage('media/collection/6.jpg');
   c7 = loadImage('media/collection/7.jpg');
-  c8 = loadImage('media/collection/8.jpg');
-  c9 = loadImage('media/collection/9.jpg');
-  c10 = loadImage('media/collection/10.jpg');
-  c11 = loadImage('media/collection/11.jpg');
 
   cv = createVideo('media/collection/vid.mp4');
   cv.hide();
 
-  collection = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, cv];
+  collection = [c1, c2, c3, c4, c5, c6, c7, cv];
 
   // Dog
   d1 = loadImage('media/dog/1.jpg');
@@ -53,12 +49,11 @@ function preload() {
   d5 = loadImage('media/dog/5.jpg');
   d6 = loadImage('media/dog/6.jpg');
   d7 = loadImage('media/dog/7.jpg');
-  d8 = loadImage('media/dog/8.jpg');
 
   dv = createVideo('media/dog/vid.mp4');
   dv.hide();
 
-  dog = [d1, d2, d3, d4, d5, d6, d7, d8, dv];
+  dog = [d1, d2, d3, d4, d5, d6, d7, dv];
 
   // Flow
   f1 = loadImage('media/flow/1.JPG');
@@ -82,12 +77,11 @@ function preload() {
   i5 = loadImage('media/industry/5.JPG');
   i6 = loadImage('media/industry/6.JPG');
   i7 = loadImage('media/industry/7.JPG');
-  i8 = loadImage('media/industry/8.JPG');
 
   iv = createVideo('media/industry/vid.mp4');
   iv.hide();
 
-  industry = [i1, i2, i3, i4, i5, i6, i7, i8, iv];
+  industry = [i1, i2, i3, i4, i5, i6, i7, iv];
 
   // Outside
   o1 = loadImage('media/outside/1.jpg');
@@ -97,12 +91,11 @@ function preload() {
   o5 = loadImage('media/outside/5.jpg');
   o6 = loadImage('media/outside/6.jpg');
   o7 = loadImage('media/outside/7.jpg');
-  o8 = loadImage('media/outside/8.jpg');
 
   ov = createVideo('media/outside/vid.mp4');
   ov.hide();
 
-  outside = [o1, o2, o3, o4, o5, o6, o7, o8, ov];
+  outside = [o1, o2, o3, o4, o5, o6, o7, ov];
 
   // Rain
   r1 = loadImage('media/rain/1.jpg');
