@@ -9,6 +9,13 @@ class Slideshow {
     }
 
     displayImage(i) {
+        this.appear = int(random(0, 25))
+        if (this.appear == 2) {
+            this.imageSize = windowWidth;
+        } else {
+            this.imageSize = windowWidth / 4
+        } 
+
         image(this.imgArray[i], 0, 0, this.imageSize, this.imageSize)
     }
 

@@ -2,25 +2,33 @@ let bg;
 
 let c1; let c2; let c3; let c4; let c5; let c6; let c7; let cv;
 let collection;
+let collectionWords = ["collection", "order", "unity"];
 
 let d1; let d2; let d3; let d4; let d5; let d6; let d7; let dv;
 let dog;
+let dogWords = ["dog", "dreaming", "luxury"];
 
 let f1; let f2; let f3; let f4; let f5; let f6; let f7; let fv;
 let flow;
+let flowWords = ["flow", "streaming", "transfer"];
 
 let i1; let i2; let i3; let i4; let i5; let i6; let i7; let iv;
 let industry;
+let industryWords = ["industry", "machinery", "automata"];
 
 let o1; let o2; let o3; let o4; let o5; let o6; let o7; let ov;
 let outside;
+let outsideWords = ["outside", "nature", "calm"];
 
 let r1; let r2; let r3; let r4; let r5; let r6; let r7; let rv;
 let rain;
+let rainWords = ["rain", "rain", "rain"];
 
 let w1; let w2; let w3; let w4; let w5; let w6; let w7; let wv;
 let wall;
+let wallWords = ["wall", "...", "..."]
 
+let textArray = [];
 let mediaArray = [];
 let vidArray = [];
 
@@ -125,9 +133,10 @@ function preload() {
 
   wall = [w1, w2, w3, w4, w5, w6, w7, wv];
 
+  // Video Array
   vidArray = [cv, dv, fv, iv, ov, rv, wv];
 
-  // Media Array
+  // Media Array. Essentially an array of arrays grouping media together
   mediaArray.push(collection);
   mediaArray.push(dog);
   mediaArray.push(flow);
@@ -135,4 +144,13 @@ function preload() {
   mediaArray.push(outside);
   mediaArray.push(rain);
   mediaArray.push(wall);
+
+  // Text Array. Another array of arrays
+  textArray.push(collectionWords);
+  textArray.push(dogWords);
+  textArray.push(flowWords);
+  textArray.push(industryWords);
+  textArray.push(outsideWords);
+  textArray.push(rainWords);
+  textArray.push(wallWords);
 }
