@@ -1,0 +1,126 @@
+let bg;
+
+let c1; let c2; let c3; let c4; let c5; let c6; let cv;
+let collection;
+
+let d1; let d2; let d3; let d4; let d5; let d6; let dv;
+let dog;
+
+let f1; let f2; let f3; let f4; let f5; let fv;
+let flow;
+
+let i1; let i2; let i3; let i4; let i5; let i6; let iv;
+let industry;
+
+let o1; let o2; let o3; let o4; let o5; let o6; let ov;
+let outside;
+
+let r1; let r2; let r3; let r4; let rv;
+let rain;
+
+let w1; let w2; let w3; let w4; let w5; let wv;
+let wall;
+
+let mediaArray = [];
+let vidArray = [];
+
+function preload() {
+  bg = loadImage('media/main.jpg');
+
+  // Collection
+  c1 = loadImage('media/collection/1.jpg');
+  c2 = loadImage('media/collection/2.jpg');
+  c3 = loadImage('media/collection/3.jpg');
+  c4 = loadImage('media/collection/4.jpg');
+  c5 = loadImage('media/collection/5.jpg');
+  c6 = loadImage('media/collection/6.jpg');
+
+  cv = createVideo('media/collection/vid.mp4');
+  cv.hide();
+
+  collection = [c1, c2, c3, c4, c5, c6, cv];
+
+  // Dog
+  d1 = loadImage('media/dog/1.jpg');
+  d2 = loadImage('media/dog/2.jpg');
+  d3 = loadImage('media/dog/3.jpg');
+  d4 = loadImage('media/dog/4.jpg');
+  d5 = loadImage('media/dog/5.jpg');
+
+  dv = createVideo('media/dog/vid.mp4');
+  dv.hide();
+
+  dog = [d1, d2, d3, d4, d5, dv];
+
+  // Flow
+  f1 = loadImage('media/flow/1.JPG');
+  f2 = loadImage('media/flow/2.JPG');
+  f3 = loadImage('media/flow/3.JPG');
+  f4 = loadImage('media/flow/4.JPG');
+  f5 = loadImage('media/flow/5.JPG');
+
+  fv = createVideo('media/flow/vid.mp4');
+  fv.hide();
+
+  flow = [f1, f2, f3, f4, f5, fv];
+
+  // Industry
+  i1 = loadImage('media/industry/1.JPG');
+  i2 = loadImage('media/industry/2.JPG');
+  i3 = loadImage('media/industry/3.JPG');
+  i4 = loadImage('media/industry/4.JPG');
+  i5 = loadImage('media/industry/5.JPG');
+  i6 = loadImage('media/industry/6.JPG');
+
+  iv = createVideo('media/industry/vid.AVI');
+  iv.hide();
+
+  industry = [i1, i2, i3, i4, i5, i6, iv];
+
+  // Outside
+  o1 = loadImage('media/outside/1.jpg');
+  o2 = loadImage('media/outside/2.jpg');
+  o3 = loadImage('media/outside/3.jpg');
+  o4 = loadImage('media/outside/4.jpg');
+  o5 = loadImage('media/outside/5.jpg');
+  o6 = loadImage('media/outside/6.jpg');
+
+  ov = createVideo('media/outside/vid.mp4');
+  ov.hide();
+
+  outside = [o1, o2, o3, o4, o5, o6, ov];
+
+  // Rain
+  r1 = loadImage('media/rain/1.jpg');
+  r2 = loadImage('media/rain/2.jpg');
+  r3 = loadImage('media/rain/3.jpg');
+  r4 = loadImage('media/rain/4.jpg');
+
+  rv = createVideo('media/rain/vid.mp4');
+  rv.hide();
+
+  rain = [r1, r2, r3, r4, rv];
+
+  // Wall
+  w1 = loadImage('media/wall/1.jpg');
+  w2 = loadImage('media/wall/2.jpg');
+  w3 = loadImage('media/wall/3.jpg');
+  w4 = loadImage('media/wall/4.jpg');
+  w5 = loadImage('media/wall/5.jpg');
+
+  wv = createVideo('media/wall/vid.mp4');
+  wv.hide();
+
+  wall = [w1, w2, w3, w4, w5, wv];
+
+  vidArray = [cv, dv, fv, iv, ov, rv, wv];
+
+  // Media Array
+  mediaArray.push(collection);
+  mediaArray.push(dog);
+  mediaArray.push(flow);
+  mediaArray.push(industry);
+  mediaArray.push(outside);
+  mediaArray.push(rain);
+  mediaArray.push(wall);
+}

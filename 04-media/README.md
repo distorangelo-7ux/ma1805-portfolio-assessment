@@ -8,4 +8,4 @@ Ask multiple people to take:
 - Favourite music
 - Three words describing their overall collection of media
 
-7-second segments for each "snapshot"
+7-second segments for each "snapshot" 
