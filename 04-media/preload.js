@@ -10,7 +10,7 @@ let dogWords = ["dog", "dreaming", "luxury"];
 
 let f1; let f2; let f3; let f4; let f5; let f6; let f7; let fv;
 let flow;
-let flowWords = ["flow", "streaming", "transfer"];
+let flowWords = ["flow", "streams", "transfer"];
 
 let i1; let i2; let i3; let i4; let i5; let i6; let i7; let iv;
 let industry;
