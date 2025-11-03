@@ -21,11 +21,20 @@ For the longest time, I've been wondering how to add timed events to my project.
 
 Besides programming, I also had to "standardise" the media used to fit a specific resolution for consistency's sake and to retain an old, distorted look. I used [paint.net](https://www.getpaint.net/) and an [online aspect ratio calculator](https://calculateaspectratio.com/) to crop my photos into a 4:3 640x480 resolution, and [ShotCut](https://www.shotcut.org/) to do the same but for videos. I found that even by cropping my photos and lowering their resolution, much more had to be done to have them resemble the "retro look" of the photos taken by my older electronics, like the KD-100 Digicam and Nintendo 2DS XL. I wish I could have addressed this further but ran out of time.
 
+I feel as though I didn't put enough effort into incorporating sound into this project as well, as I'm currently using sounds from freesound.org instead of making my own. If I put more time into this, I would've loved to have more self-recorded sounds that could've contributed to the atmosphere of this project.
+
 ## CONCLUDING REMARKS
 I didn't struggle with this as much as I did my "MOVEMENT" project, either because I've become more confident in my abilities, or because this wasn't as complicated as the former, maybe both.
 
 This could have been way more interesting had I asked other people to take their own photos, videos and audio, but I ran out of time or was not able to ask around for contributors. Even still, I'm happy to have created an art piece with the collections of pictures I've been taking, as well as seeing a bit of my voice in it.
 
 Even with my previous coding knowledge, I feel as though there is more to learn about p5js and digital art in general, so I'm looking forward to pursuing this module even further.
+
+## SOUND CREDITS
+Website used to compress sounds: https://www.xconvert.com/
+
+Gothic Ambient Noise 1 Stereo C3 by Vanyamba -- https://freesound.org/s/529152/ -- License: Creative Commons 0
+
+BellTree01_02.wav by Department64 -- https://freesound.org/s/550236/ -- License: Attribution 4.0
 
 - Angelo D.

@@ -93,6 +93,7 @@ function playMedia() {
     // Timed action to start slideshow
     if (TimerAppear.timerAction(1.5)) {
       TimerAppear.timerReset();
+      ambienceSound.play();
       appear = true;
     }
 
@@ -115,6 +116,7 @@ function playMedia() {
       TimerText.timerReset();
       if (currentStage < 4) currentStage++;
       if (currentStage == 4) {
+        bellSound.play();
         textFlow = true;
       }
     }
@@ -125,6 +127,9 @@ function playMedia() {
       TimerObject.timerReset();
       TimerImage.timerReset();
       TimerVideo.timerReset();
+
+      ambienceSound.stop();
+      bellSound.stop();
 
       currentStage = 0;
       textOverflow = 0;
@@ -181,7 +186,11 @@ function cycle() {
   // ie. if profile = 0, it will be referring to the 'collection' array of images. If profile = 1, it will refer to the 'dog' array of images.
   profile++;
   if (profile > mediaArray.length - 1) {
-    profile = 0;
+    clear();
+    // PS. This crash is INTENTIONAL and contributes to the eeriness of the art project. The error message in the console should also say "ACCESS is not defined"... Is that cool?
+    for (i = 0; i < mediaArray.length; i++) {
+      TextObject.setArray(ACCESS);
+    }
   }
 
   arrayCopy(mediaArray[profile], currentArray);

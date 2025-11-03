@@ -20,4 +20,13 @@ To add some further polishing, I also read ahead in the documentation to incorpo
 ## CLOSING REMARKS
 Overall, I'm satisfied how with this turned out. If I had more time, I would've loved to see if I could change this project so the whole window is accounted for instead of a small portion of the screen.
 
+## SOUND CREDITS
+Gothic Ambient Noise 1 Stereo C3 by Vanyamba -- https://freesound.org/s/529152/ -- License: Creative Commons 0
+
+DrumReverbHit.wav by csproductions -- https://freesound.org/s/36829/ -- License: Creative Commons 0
+
+Button-impact by gobbe57 -- https://freesound.org/s/746674/ -- License: Attribution 4.0
+
+Keyboard Typing, Medium Speed Typing, Fast Typing, Single Buttons, Enter Button, Space Button.wav by ZvoolabAudio -- https://freesound.org/s/456191/ -- License: Creative Commons 0
+
 - Angelo D.

@@ -28,11 +28,22 @@ let w1; let w2; let w3; let w4; let w5; let w6; let w7; let wv;
 let wall;
 let wallWords = ["wall", "...", "..."]
 
+let ambienceSound;
+let bellSound;
+
 let textArray = [];
 let mediaArray = [];
 let vidArray = [];
 
 function preload() {
+  soundFormats('mp3');
+  ambienceSound = loadSound('media/ambience.mp3');
+  ambienceSound.setVolume(0.25);
+
+  bellSound = loadSound('media/bell.mp3');
+  bellSound.setVolume(0.5);
+
+
   bg = loadImage('media/main.jpg');
 
   // Collection
