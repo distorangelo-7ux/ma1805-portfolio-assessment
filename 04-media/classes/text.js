@@ -1,3 +1,7 @@
+// Pretty much similar to the Slideshow object so I could have implemented this in there too. Oh well!
+
+// (it's easier this way anyways)
+
 class Text {
     constructor() {
         this.textArray;
@@ -8,6 +12,7 @@ class Text {
         this.textArray = textArray;
     }
 
+    // Stage increments after some time has passed, overflow is the value added onto the final text to create the "bleeding" effect
     displayText(stage, overflow) {
         this.overflow = overflow;
         textSize(25);
@@ -17,6 +22,7 @@ class Text {
         if (stage >= 2) text(this.textArray[1], windowWidth / 3.5, windowHeight / 4);
         if (stage >= 3) text(this.textArray[2], windowWidth / 3.5, windowHeight / 2);
 
+        // Overflow effect
         if (stage >= 4) {
             for (this.i = 0; this.i < this.overflow; this.i++) {
                 this.offsetX = int(random(-5, 5));

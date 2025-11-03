@@ -7,4 +7,4 @@ I wanted to create a face that feels as though they fall short of these standard
 
 Moreover, the programming behind this mini project was a bit challenging, but I drew plenty inspiration from the p5js documentation to code systems like the creation of buttons, checking the position of the cursor, etc.
 
-- Angelo
+- Angelo D.

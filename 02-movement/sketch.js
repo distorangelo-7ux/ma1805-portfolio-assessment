@@ -14,19 +14,6 @@ let verbRandom = ["imagining","sleeping","speaking","sparking","thinking","creat
 // Empty array for the placeholders that fill the top and bottom parts of the screen
 let emptyRandom = [" ", " ", " "]
 
-let placeholder1;
-let placeholder2;
-let placeholder3;
-
-let article;
-let noun;
-let linking;
-let adverb;
-let verb;
-
-let placeholder4;
-let placeholder5;
-let placeholder6;
 
 let scrambleValue = 0;
 let finishScrambling = false;
@@ -35,66 +22,6 @@ let posX = 0;
 let posY = 200;
 
 let typeSound;
-
-class Word {
-  constructor( randomList, chosenWord, range, display, scramble, position ) {
-    this.randomList = randomList;
-    this.chosenWord = chosenWord;
-    this.range = range;
-    this.display = display;
-    this.scramble = scramble;
-    this.position = position;
-
-    this.refresh();
-  }
-  
-  zeroScramble() {
-    for (i = 0; i < this.display.length; i++) {
-      if (this.scramble[i] != 0) {
-        this.display[i] = int( random(0, 9) ).toString();
-      }
-    }
-  }
-
-  refresh() {
-    arrayCopy(defaultArray, this.display);
-    arrayCopy(defaultArray, this.scramble);
-
-    wipeAll(this.chosenWord);
-    wipeAll(this.range);
-
-    this.scrambleArray(this.scramble);
-    this.setWord(this.chosenWord, this.randomList, this.range);
-  }
-
-  setWord(chosenWord, randomList, range) {
-    let randomWordIndex = int(random(0, randomList.length ))
-    let chosenIndividual = randomList[randomWordIndex].toUpperCase().split("");
-
-    arrayCopy(chosenIndividual, chosenWord);
-
-    let wordLength = int(chosenWord.length);
-    let startingIndex = int( int(defaultArray.length / 2)  - int(wordLength / 2));
-
-    range[0] = startingIndex;
-    range[1] = startingIndex + wordLength - 1;
-  }
-
-  scrambleArray(scramble) {
-    for (i = 0; i < scramble.length; i++) {
-      scramble[i] = int(random(2, 5)).toString();
-    }
-  }
-
-  updateDisplay(index) {
-    if (index >= this.range[0] && index <= this.range[1]) {
-      this.display[index] = this.chosenWord[ index - this.range[0] ];
-    } else {
-      this.display[index] = " ";
-    }
-  }
-
-}
 
 function preload() {
   soundFormats('wav','mp3','ogg');
@@ -116,16 +43,19 @@ function setup() {
   typeSound.play();
   ambientSound.loop();
 
+  // Top-screen filler
   placeholder1 = new Word( emptyRandom, [], [], [], [], positioningArray[0]);
   placeholder2 = new Word( emptyRandom, [], [], [], [], positioningArray[1]);
   placeholder3 = new Word( emptyRandom, [], [], [], [], positioningArray[2]);
 
+  // Middle-screen filler
   article = new Word( articleRandom, [], [], [], [], positioningArray[3]);
   noun = new Word( nounRandom, [], [], [], [], positioningArray[4]);
   linking = new Word( linkingRandom, [], [], [], [], positioningArray[5]);
   adverb = new Word( adverbRandom, [], [], [], [], positioningArray[6]);
   verb = new Word( verbRandom, [], [], [], [], positioningArray[7]);
 
+  // Bottom-screen filler
   placeholder4 = new Word( emptyRandom, [], [], [], [], positioningArray[8]);
   placeholder5 = new Word( emptyRandom, [], [], [], [], positioningArray[9]);
   placeholder6 = new Word( emptyRandom, [], [], [], [], positioningArray[10]);
@@ -140,6 +70,7 @@ function mouseClicked() {
   drumSound.play();
   typeSound.play();
   
+  // All of the objects are restarted then initiated
   article.refresh();
   noun.refresh();
   linking.refresh();
@@ -154,6 +85,7 @@ function mouseClicked() {
   placeholder6.refresh();
 }
 
+// zeroScramble is responsible for allocating random digits to each array index
 function draw() {
   article.zeroScramble();
   noun.zeroScramble();
@@ -177,6 +109,7 @@ function wipeAll(array) {
   }
 }
 
+// Automating the positions for each object
 function setPositions(starting, spacing) {
   arrayCopy(emptyArray, positioningArray)
   positioningArray.push(starting)
@@ -187,6 +120,7 @@ function setPositions(starting, spacing) {
   }
 }
 
+// For each array of characters, check if they're still scrambling 
 function scrambleFunction() {
   checkScramble(article);
   checkScramble(noun);
@@ -212,22 +146,27 @@ function drawLines() {
     textFont('Courier New');
     textSize(30);
 
+    // Green text while scrambling
     fill('#5cdb86ff');
 
+    // Change text to white after scrambling
     if (finishScrambling) {
       fill('#e8e0e0ff');
     }
 
+    // Top-screen filler
     text(placeholder1.display[i], posX, placeholder1.position);
     text(placeholder2.display[i], posX, placeholder2.position);
     text(placeholder3.display[i], posX, placeholder3.position);
 
+    // Mid-screen filler
     text(article.display[i], posX, article.position);
     text(noun.display[i], posX, noun.position);
     text(linking.display[i], posX, linking.position);
     text(adverb.display[i], posX, adverb.position);
     text(verb.display[i], posX, verb.position);
 
+    // Bottom-screen filler
     text(placeholder4.display[i], posX, placeholder4.position);
     text(placeholder5.display[i], posX, placeholder5.position);
     text(placeholder6.display[i], posX, placeholder6.position);
@@ -239,6 +178,7 @@ function drawLines() {
 function checkScramble(wordObject) {
   let randomScramble = wordObject.scramble;
 
+  // If there are still characters to scramble, keep scrambling
   if (!checkIfScrambleFinished(randomScramble)) {
     for (i = 0; i < randomScramble.length; i++) {
       reduceScramble(i, wordObject);
@@ -255,6 +195,7 @@ function checkScramble(wordObject) {
   }
 }
 
+// Subtract scrambling value
 function reduceScramble(index, wordObject) {
     let randomLength = wordObject.scramble;
 
@@ -269,6 +210,7 @@ function reduceScramble(index, wordObject) {
     randomLength[index] = scrambleValue;
 }
 
+// Function responsible for replacing each array position with the right character
 function replaceIndex(index, wordObject) {
   wordObject.updateDisplay(index);
 

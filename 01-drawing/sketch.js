@@ -31,18 +31,30 @@ function setup() {
   startButton.mouseClicked(activateCanvas);
 }
 
+// Canvas is "activated" after the button is pressed
+function activateCanvas() {
+  getRandomTranslate();
+  startButton.remove();
+  refreshButton = createButton('Retake photo?');
+  refreshButton.position(310,600);
+
+  refreshButton.mouseClicked(getRandomTranslate);
+  isActive = true;
+}
+
 function draw() {
   background(bgHex);
 
   textAlign(CENTER);
   translate(0,0);
 
+  // Will only draw when canvas has been activated
   if (isActive) {
     drawAll();
   }
 
+  // Check for hover effects, then execute when true
   checkIfHovering();
-
   if (isHovering) {
     getRandomTranslate();
     textSize(100)
@@ -55,16 +67,6 @@ function draw() {
   } else {
     bgHex = '#e3ded7'
   }
-}
-
-function activateCanvas() {
-  getRandomTranslate();
-  startButton.remove();
-  refreshButton = createButton('Retake photo?');
-  refreshButton.position(310,600);
-
-  refreshButton.mouseClicked(getRandomTranslate);
-  isActive = true;
 }
 
 function checkIfHovering() {
@@ -110,6 +112,7 @@ function drawAll() {
 
 }
 
+// Function responsible for changing size and position
 function getRandomTranslate() {
 
   leftEyeX = random(-5, 5);

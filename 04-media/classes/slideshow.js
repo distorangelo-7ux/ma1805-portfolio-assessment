@@ -9,6 +9,7 @@ class Slideshow {
     }
 
     displayImage(i) {
+        // 1/25 chance for the displayed image to take up the whole screen
         this.appear = int(random(0, 25))
         if (this.appear == 2) {
             this.imageSize = windowWidth;
@@ -16,9 +17,11 @@ class Slideshow {
             this.imageSize = windowWidth / 4
         } 
 
+        // Show the image from the array, according to the index passed
         image(this.imgArray[i], 0, 0, this.imageSize, this.imageSize)
     }
 
+    // Show video from the array, according to the index passed
     displayVideo(i) {
         image(this.imgArray[i], 0, 0, windowWidth, windowHeight);
         this.imgArray[i].play();

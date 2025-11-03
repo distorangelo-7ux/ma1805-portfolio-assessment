@@ -176,6 +176,9 @@ function startCycle() {
 
 // Initiates cycle by assigning the arrays for text and image.
 function cycle() {
+
+  // Profile acts as the index for the array of arrays grouping up the different media assets.
+  // ie. if profile = 0, it will be referring to the 'collection' array of images. If profile = 1, it will refer to the 'dog' array of images.
   profile++;
   if (profile > mediaArray.length - 1) {
     profile = 0;

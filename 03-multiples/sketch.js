@@ -37,7 +37,6 @@ function draw() {
 
   fill(128);
   rect(windowWidth - 25, 25 - rgbDepth * 5, 25, 100, 25);
-
 }
 
 function drawGrid() {
@@ -60,7 +59,10 @@ function drawShapes(i) {
   let g = random(25, 255);
   let b = random(75, 255);
 
+  // rgbDepth increases after scrolling, to create the illusion of them getting darker
   fill(r + rgbDepth, g + rgbDepth, b + rgbDepth);
+
+  // If divisible by 2, turn into square. Otherwise, turn to circle
   if ( int(arrayOfShapes[i]) % 2 == 0) {
       square((cornerWidth * x) + margins, (cornerHeight + margins) * y, squareSize);
     }
@@ -69,12 +71,14 @@ function drawShapes(i) {
     }
 }
 
+// Switching between shapes
 function randomiseShapes() {
   for (i = 0; i < arrayOfShapes.length - 1; i++) {
     arrayOfShapes[i] = int(random(0, 255));
   }
 }
 
+// By scrolling, the shapes and their colours become randomised, and two values are increased for the colour of the objects and the background.
 function mouseWheel(event) {
   randomiseShapes();
   drawGrid();
