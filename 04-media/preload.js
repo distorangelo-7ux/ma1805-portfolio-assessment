@@ -42,7 +42,7 @@ function preload() {
   c4 = loadImage('media/collection/4.jpg');
   c5 = loadImage('media/collection/5.jpg');
   c6 = loadImage('media/collection/6.jpg');
-  c7 = loadImage('media/collection/7.JPG');
+  c7 = loadImage('media/collection/7.jpg');
 
   cv = createVideo('media/collection/vid.mp4');
   cv.hide();
