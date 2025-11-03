@@ -42,7 +42,7 @@ function preload() {
   c4 = loadImage('media/collection/4.jpg');
   c5 = loadImage('media/collection/5.jpg');
   c6 = loadImage('media/collection/6.jpg');
-  c7 = loadImage('media/collection/7.jpg');
+  c7 = loadImage('media/collection/7.JPG');
 
   cv = createVideo('media/collection/vid.mp4');
   cv.hide();
@@ -125,8 +125,8 @@ function preload() {
   w3 = loadImage('media/wall/3.jpg');
   w4 = loadImage('media/wall/4.jpg');
   w5 = loadImage('media/wall/5.jpg');
-  w6 = loadImage('media/wall/6.jpg');
-  w7 = loadImage('media/wall/7.jpg');
+  w6 = loadImage('media/wall/6.JPG');
+  w7 = loadImage('media/wall/7.JPG');
 
   wv = createVideo('media/wall/vid.mp4');
   wv.hide();
